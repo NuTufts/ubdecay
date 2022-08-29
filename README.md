@@ -27,7 +27,7 @@ cd ../hdf5/
 tar -xvf HDF5-1.12.2-Linux.tar.gz
 ```
 
-## Run configure file to set everything up (rerun to build again)
+### Run configure file to set everything up (rerun to build again)
 
 ```bash
 source build.sh
@@ -38,21 +38,18 @@ To build and test do
 source buildtest.sh
 ```
 
-## On startup run
+### Get input flux
+Run `extract_MicroBooNE_flux.py` to get fluxes (input and outputs files can also be found at Mayer:/home/oalterkait/ubdecay).
+
+Copy the input flux .dat file to `nuSQUIDSDecay/fluxes/`. They are formatted via CosTheta / Enu / NuFlux / Anti-NuFlux
+nRows = nCosth x nEnu. 
+
+### On startup run
 
 ```bash
 source configure.sh
 ```
 
+### Evolve fluxes
 
-
-
-
-
-
-
-
-
-The input fluxes are kept in files in nuSQUIDSDecay/fluxes/
-The are formatted via CosTheta / Enu / NuFlux / Anti-NuFlux
-nRows = nCosth x nEnu
+Go to `nuSQUIDSDecay/examples` and run `./uBFlux_example`.
