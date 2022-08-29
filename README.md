@@ -27,14 +27,21 @@ cd ../hdf5/
 tar -xvf HDF5-1.12.2-Linux.tar.gz
 ```
 
-## Run configure file to set everything up
+## Run configure file to set everything up (rerun to build again)
+
 ```bash
-source configure.sh
+source build.sh
 ```
 
 To build and test do 
 ```bash
-source configuretest.sh
+source buildtest.sh
+```
+
+## On startup run
+
+```bash
+source configure.sh
 ```
 
 
