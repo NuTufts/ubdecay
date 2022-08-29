@@ -1,0 +1,9 @@
+[submodule "SQuIDS"]
+	path = SQuIDS
+	url = https://github.com/jsalvado/SQuIDS.git
+[submodule "nuSQuIDS"]
+	path = nuSQuIDS
+	url = https://github.com/arguelles/nuSQuIDS.git
+[submodule "nuSQUIDSDecay"]
+	path = nuSQUIDSDecay
+	url = https://github.com/OmarAlterkait/nuSQUIDSDecay.git
