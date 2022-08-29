@@ -52,4 +52,8 @@ source configure.sh
 
 ### Evolve fluxes
 
-Go to `nuSQUIDSDecay/examples` and run `./uBFlux_example`.
+Go to `nuSQUIDSDecay/examples` and run 
+
+```bash
+./uBFlux_example
+```
