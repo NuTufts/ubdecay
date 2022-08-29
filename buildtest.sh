@@ -17,8 +17,8 @@ cd ../nuSQuIDS/
 
 make uninstall
 make
-make test
 make install
+make test
 
 export LD_LIBRARY_PATH=/home/oalterkait/ubdecay/buildnuSQuIDS/lib:/home/oalterkait/ubdecay/buildSQuIDS/lib:$LD_LIBRARY_PATH
 export PKG_CONFIG_PATH=/home/oalterkait/ubdecay/buildnuSQuIDS/lib/pkgconfig:/home/oalterkait/ubdecay/buildSQuIDS/lib/pkgconfig:$PKG_CONFIG_PATH

@@ -1,2 +1,5 @@
 # remove backup files
 *~
+
+#remove cmake files
+CMake*
