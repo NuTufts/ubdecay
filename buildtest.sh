@@ -1,37 +1,39 @@
 #!/bin/bash
 
 # Setup SQuIDS
-export HOMEDECAY=/home/oalterkait/ubdecay/buildSQuIDS/
+HOMEDECAY=$PWD
+export HOMESQ="${HOMEDECAY}/buildSQuIDS/"
 cd SQuIDS/
-./configure --prefix=$HOMEDECAY
+./configure --prefix=$HOMESQ
 make uninstall
 make
 make test
-export PKG_CONFIG_PATH="${HOMEDECAY}lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="${HOMESQ}lib/pkgconfig:$PKG_CONFIG_PATH"
 make install
 
 # Setup nuSQuIDS
 cd ../nuSQuIDS/
 
-./configure --prefix=/home/oalterkait/ubdecay/buildnuSQuIDS/ --with-squids-incdir=/home/oalterkait/ubdecay/buildSQuIDS/include/ --with-squids-libdir=/home/oalterkait/ubdecay/buildSQuIDS/lib/ --with-hdf5=/home/oalterkait/ubdecay/hdf5/HDF5-1.12.2-Linux/HDF_Group/HDF5/1.12.2/
+export HOMENUS="${HOMEDECAY}/buildnuSQuIDS/"
+export SQUIDSINC="${HOMEDECAY}/buildSQuIDS/include/"
+export SQUIDSLIB="${HOMEDECAY}/buildSQuIDS/lib/"
+export HDF5LOC="${HOMEDECAY}/hdf5/HDF5-1.12.2-Linux/HDF_Group/HDF5/1.12.2/"
+
+
+./configure --prefix=$HOMENUS --with-squids-incdir=$SQUIDSINC --with-squids-libdir=$SQUIDSLIB --with-hdf5=$HDF5LOC
+
 
 make uninstall
 make
 make install
 make test
 
-export LD_LIBRARY_PATH=/home/oalterkait/ubdecay/buildnuSQuIDS/lib:/home/oalterkait/ubdecay/buildSQuIDS/lib:$LD_LIBRARY_PATH
-export PKG_CONFIG_PATH=/home/oalterkait/ubdecay/buildnuSQuIDS/lib/pkgconfig:/home/oalterkait/ubdecay/buildSQuIDS/lib/pkgconfig:$PKG_CONFIG_PATH
-
-export PKG_CONFIG_PATH=/home/oalterkait/ubdecay/hdf5/HDF5-1.12.2-Linux/HDF_Group/HDF5/1.12.2/lib/pkgconfig:$PKG_CONFIG_PATH
-export LD_LIBRARY_PATH=/home/oalterkait/ubdecay/hdf5/HDF5-1.12.2-Linux/HDF_Group/HDF5/1.12.2/lib:$LD_LIBRARY_PATH
-
-export NUSQUIDS_DATA_PATH=/home/oalterkait/ubdecay/buildnuSQuIDS/share/nuSQuIDS
-export LD_LIBRARY_PATH=/home/oalterkait/ubdecay/buildnuSQuIDS/lib:/home/oalterkait/ubdecay/buildSQuIDS/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/home/oalterkait/ubdecay/hdf5/HDF5-1.12.2-Linux/HDF_Group/HDF5/1.12.2/lib:$LD_LIBRARY_PATH
-export PKG_CONFIG_PATH=/home/oalterkait/ubdecay/buildnuSQuIDS/lib/pkgconfig:/home/oalterkait/ubdecay/buildSQuIDS/lib/pkgconfig:$PKG_CONFIG_PATH
-export NUSQUIDS_DATA_PATH=/home/oalterkait/ubdecay/buildnuSQuIDS/share/nuSQuIDS
-
+export PKG_CONFIG_PATH="${HOMEDECAY}/hdf5/HDF5-1.12.2-Linux/HDF_Group/HDF5/1.12.2/lib/pkgconfig:$PKG_CONFIG_PATH"
+export NUSQUIDS_DATA_PATH="${HOMEDECAY}/buildnuSQuIDS/share/nuSQuIDS"
+export LD_LIBRARY_PATH="${HOMEDECAY}/buildnuSQuIDS/lib:${HOMEDECAY}/buildSQuIDS/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="${HOMEDECAY}/hdf5/HDF5-1.12.2-Linux/HDF_Group/HDF5/1.12.2/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="${HOMEDECAY}/buildnuSQuIDS/lib/pkgconfig:${HOMEDECAY}/buildSQuIDS/lib/pkgconfig:$PKG_CONFIG_PATH"
+export NUSQUIDS_DATA_PATH="${HOMEDECAY}/buildnuSQuIDS/share/nuSQuIDS"
 
 # Setup nuSQUIDSDECAY
 cd ../nuSQUIDSDecay/
