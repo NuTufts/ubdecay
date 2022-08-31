@@ -51,23 +51,21 @@ def main():
     # CosTheta angle defined as theta = 0 (above), costheta = 1
     # This is done to assume neutrinos don't pass through the earth (icecube framework)
     # Which is appropriate for MicroBooNE which has little earthly contact.
-    cosTheta = 1
     cv_numu_flux_h = tree_dict["hEnumu_cv"]
     cv_numubar_flux_h = tree_dict["hEnumubar_cv"]
     print("Number of Energy Bins:",cv_numu_flux_h.GetNbinsX())
     # Lets write to an output file as costheta/enu/numuflux/numubarflux
     # This is the format nusquidsdecay expects.
     # outputFluxDat = open("MicroBooNE_SQuIDSFormat_Flux_NumuAndAntiNuMu.dat")
-    numpyArrayToWrite = np.zeros((cv_numu_flux_h.GetNbinsX(),4))
-    numpyArrayToWrite[:,0] = cosTheta
+    numpyArrayToWrite = np.zeros((cv_numu_flux_h.GetNbinsX(),3))
     for binIdx in range(cv_numu_flux_h.GetNbinsX()):
         assert cv_numu_flux_h.GetBinCenter(binIdx+1) == cv_numubar_flux_h.GetBinCenter(binIdx+1)
         energy_gev = cv_numu_flux_h.GetBinCenter(binIdx+1)
         numuFlux = cv_numu_flux_h.GetBinContent(binIdx+1)*scaleFactor
         numubarFlux = cv_numubar_flux_h.GetBinContent(binIdx+1)*scaleFactor
-        numpyArrayToWrite[binIdx,1] = energy_gev
-        numpyArrayToWrite[binIdx,2] = numuFlux
-        numpyArrayToWrite[binIdx,3] = numubarFlux
+        numpyArrayToWrite[binIdx,0] = energy_gev
+        numpyArrayToWrite[binIdx,1] = numuFlux
+        numpyArrayToWrite[binIdx,2] = numubarFlux
 
     # Write the output to a dat file.
     np.savetxt("MicroBooNE_SQuIDSFormat_Flux_NumuAndAntiNuMu.dat",numpyArrayToWrite)

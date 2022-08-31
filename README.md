@@ -57,3 +57,10 @@ Go to `nuSQUIDSDecay/examples` and run
 ```bash
 ./uBFlux_example
 ```
+
+Extra parameters can be put in as
+```bash
+./uBFlux_example (mu4_mass) (theta24) (coupling)
+```
+
+the initial and final outputs will be in `output/ub_initial.dat` and `output/ub_final_m(mu4_mass)_t(theta24)_c(coupling).dat` respectively.
