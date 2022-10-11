@@ -7,3 +7,4 @@
 [submodule "nuSQUIDSDecay"]
 	path = nuSQUIDSDecay
 	url = https://github.com/OmarAlterkait/nuSQUIDSDecay.git
+	branch = main
